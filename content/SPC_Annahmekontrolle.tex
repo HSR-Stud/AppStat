@@ -1,0 +1,93 @@
+\subsection{Annahmekontrolle, Zählende Prüfung}
+\begin{itemize}
+	\item Aufgrund von Informationen aus einer Stichprobe entscheiden über die Qualität des ganzen Loses
+	\item Mittelweg zwischen keiner Kontrolle und 100\%-Kontrolle
+	\item Basierend auf Prüfplänen
+	\item Kann im gegensatz zu vorherigen Prüfungen nicht in Prozess eingreifen
+	\item \textbf{Los} Menge eines Produktes das unter gleichen Bedingungen entstanden ist und als einheitlich angesehen werden kann
+\end{itemize}
+
+\subsubsection{Prüfpläne für Zählende Prüfung}
+\begin{itemize}
+	\item $N$ Einheiten hat ein Los
+	\item $m$ Einheiten eines Loses sind ausschuss
+	\item $p$ Ausschussquote $p=\frac{m}{N}$, Problem dabei ist, dass $m$ nicht bekannt ist
+	\item $n$ Stichprobenumfang
+	\item $x$ eine Regel (z.B. für eine Eigenschaft)
+	\item $c$ Annahmezahl, solange weniger Ausschuss in einem Los enthalten ist wieder dieses angenommen
+	\begin{itemize}
+		\item $x<\leq c$ Los wird angenommen, andernfalls abgelehnt
+	\end{itemize}
+	\item $n$ und $c$ sind die \textbf{Kenngrössen} eines Prüfplans
+	\item $H_0$: $x\leq c$ d.h. das Los wird angenommen
+	\item $\alpha$ Produzentenrisiko (siehe Kaptiel \ref{subsubsec:Fehler})
+	\item $\beta$ Konsumentenrisiko (siehe Kaptiel \ref{subsubsec:Fehler})
+\end{itemize}
+
+\subsubsection{Fehler 1. Art und 2. Art}
+\label{subsubsec:Fehler}
+\begin{itemize}
+	\item \textbf{Fehler 1. Art} liegen vor, wenn ein eigentlich gutes Los wegen einer schlechten Stichprobe retourniert
+	\begin{itemize}
+		\item Bezeichnet als das Produzentenrisiko
+		\item Wird mit $\alpha$ bezeichnet
+	\end{itemize}
+	\item \textbf{Fehler 2. Art} liegen vor, wenn ein eigentlich schlechtes Los wegen einer gut scheinenden Stichprobe angenommen wird
+	\begin{itemize}
+		\item Bezeicht als Konsumentenrisiko
+		\item Wird mit $\beta$ bezeichnet
+	\end{itemize}
+	\item Vom Produzent festgelegte Grenze für Retournierung: $p_\alpha$ $\rightarrow$ annehmbare Qualitätslage
+	\item Vom Konsument festgelegte Grenze für Retournierung: $p_\beta$ $\rightarrow$ rückweisende Qualitätslage
+	\begin{itemize}
+		\item Es muss $p_\alpha<p_\beta$ gelten
+		\item Der Produzent will wenn möglich Lose mit $p<p_\alpha$ nicht zurücknehmen
+		\item Der Konsument will wenn möglich Lose mit $p_\beta<p$ nicht annehmen
+	\end{itemize}
+	\item Ein Prüfplan minimiert $\alpha$ und $\beta$ möglichst fest, d.h. es werden möglichst keine Fehlentscheide getroffen
+\end{itemize}
+
+\subsubsection{Operationscharakteristik}
+\begin{itemize}
+	\item Die Operationscharakteristik eines Prüfplans stellt einen Zusammenhang zwischen den vier Grössen ($\alpha, \beta, p_\alpha \text{ und } p_\beta$) her
+	\item Beschreibt die Annahmewahrscheinlichkeit eines Loses in Abhängigkeit der Ausschussquote $p$
+	\item $\text{OC:} \left[0,1\right]\rightarrow \left[0,1\right]$
+	\item Je grösser die Ausschussquote $p$ ist, desto kleiner soll die Annahmewahrscheinlichkeit (OC) sein
+	\begin{itemize}
+		\item Für $p=0$ soll $\text{OC}=1$ sein $\Rightarrow \text{OC}(0)=1$ (Lieferung wird sicher angenommen)
+		\item Für $p=1$ soll $\text{OC}=0$ sein $\Rightarrow \text{OC}(1)=0$ (Lieferung wird sicher abgelehnt resp. retourniert)
+	\end{itemize}
+	\item $p^\ast$ ist die Zulässige Ausschussquote, mit dieser lässt sich OC gemäss der Gleichung \ref{eq:OC} ausdrücken
+	\begin{itemize}
+		\item Eine Vollständige Prüfung ist in der Regel nicht möglich, daher wird folgendes definiert
+		\item Anzahl $x$ defekter Einheiten ist höchsten gleich Annahmezahl $c$
+		\item Es liegen also $N$ Einheiten vor, mit $m (=pN)$ schlechten und somit mit $N-m (=N-pN)$ guten Einheiten, davon wird eine Stichprobe $n$ gezogen. Die Wahrscheinlichkeit, dass sich unter den $n$ einheiten höchsten $c$ Einheiten Ausschuss befinden ist in Formel \ref{eq:OCp} berechnet. Annahme resp. Ablehnung bestimmen mit Gleichung \ref{eq:OC}
+		\item Die Anzahl defekter Einheiten ist X, es handelt sich dabei um eine hypergeometrische Zufallsvariabel
+	\end{itemize}
+	\item Für Visualisierungen der OC siehe Skript s. 56
+	\item Zusammenhang zwischen Fehler der 1.- und 2. Art ist gegeben wie folgt:
+	\begin{itemize}
+		\item $\text{OC}(p_\alpha) = 1-\alpha$
+		\item $\text{OC}(p_\beta) = \beta$
+	\end{itemize}
+\end{itemize}
+\subsubsection{Kenngrössen eines Prüfplanes bestimmen}
+\begin{itemize}
+	\item Vorraussetzung Produzent und Konsument sind sich einig über $\alpha, \beta, p_\alpha \text{ und } p_\beta$
+	\begin{itemize}
+		\item Somit sind zwei Punkte der OC-Kennlinie (nämlich $(p_\alpha,1-\alpha) \text{ und } (p_\beta,\beta)$ gegeben
+	\end{itemize}
+	\item Zu bestimmen ist $n$ (Stichprobenumfang) und $c$ (Annahmezahl)
+\end{itemize}
+
+\begin{align}
+	\label{eq:OC}
+	\text{OC}(p) &= \left\lbrace \begin{matrix}
+		1 & \qquad &\text{wenn } &p\leq p^\ast \qquad &\Rightarrow &\text{Annahemen}\\
+		0 & \qquad &\text{wenn } &p^\ast> p 	\qquad &\Rightarrow &\text{Ablehnen}
+	\end{matrix}\right.\\
+	\label{eq:OCp}
+	\text{OC}(p) &= P(X\leq c) = \sum_{k=0}^{c}P(X=k) = \sum_{k=0}^{c}\frac{\binom{pN}{k}\binom{N-pN}{n-k}}{\binom{N}{n}}
+\end{align}
+
+\clearpage

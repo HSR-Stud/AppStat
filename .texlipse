@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Sat Jun 30 13:08:55 CEST 2018
+markTmpDer=true
+builderNum=2
+outputDir=out/
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=AppStat.tex
+outputFile=AppStat.pdf
+langSpell=en
+markDer=true
+srcDir=

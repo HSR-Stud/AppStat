@@ -1,0 +1,87 @@
+\subsection{Kontrollkarten mit Gedächnis}
+\begin{itemize}
+	\item Bei klassischen (Shewart) Kontrollkarten erfolgt Entscheid über Eingriff auf Basis des Ergebnisses einer Stichprobe
+	\begin{itemize}
+		\item Vergangenheit wird nicht mitberücksichtigt
+	\end{itemize}
+	\item Wird die Vergangenheit mit Berücksichtigt ist es eine \textbf{Kontrollkarte mit Gedächtnis}
+	\item Vorteil: Störungen können schneller aufgedeckt werden
+	\item Kontrollkarten mit Gedächtnis basieren auf Linearkombination einiger (oder aller)  vor Zeitpunkt $i$vorgenommenen Stichproben
+	\item Die allgemeine Formel dafür ist Formel \ref{eq:gedaechtnisAlg}
+	\item Die Parameter $\alpha_i$ und $\beta_i$ legen den Typ der Kontrollkarte fest
+	\begin{itemize}
+		\item Wenn z.B $\alpha_i = 0$ , $\beta_1\ldots\beta_{i-1} = 0$ und $\beta_i=1$ ist das die gedächtnislose Shewart $\bar{x}$-Karte
+	\end{itemize}
+	\item Je kleiner $\left\vert \delta\right\rvert$ ist (siehe Formel \ref{eq:delta}), desto rascher wird eine Abweichung vom Zielwert ($\mu_0$) erkannt.
+	\begin{itemize}
+		\item Desto kürzer ist die ARL (mittlere Lauflänge, Kapitel \ref{subsubsec:MittlereLauflaenge})
+	\end{itemize}
+\end{itemize}
+\begin{align}
+	\label{eq:gedaechtnisAlg}
+	y_i&= \alpha_i + \sum_{j=1}^{i}\beta_j\bar{x}_i
+\end{align}
+
+\subsubsection{CUMSUM}
+\begin{itemize}
+	\item Cumulative Sum Control Chart, Karte zur Kontrolle der Mittelwerte
+	\item Trägt die Kummulative Abweichung der Stichproben zu dem Zielwert auf, sofern diese eine gewisse Grenze überschreiten
+	\item Kann sowohl für einzlene Beobachtungen, wie auch für Stichproben verwendet werden
+	\item Für Prozesse Empfohlen bei denen bereits kleine Störungen bedeutsam sind und aufgedeckt werden müssen
+	\item CUMSUM-Karte verwendet zwei \glqq Speicherwerte\grqq für Aufsummieren der Abweichung
+	\begin{itemize}
+		\item Formel \ref{eq:CUMSUMPlus} für obere Grenze und Formel \ref{eq:CUMSUMPlus} für untere Grenze
+		\item Beide dieser Werte müssen mit jedem neuen Messwert aktualisiert werden
+		\item $K$ ist hierbei der Referenzwert, es werden nur Fehler erkannt, die diesen Überwiegen
+		\item Ein guter Wert für $K$: siehe Formel \ref{eq:CUMSUMK}
+		\item Soll ein Shift von $\Delta$ aufgedeckt werden $\Rightarrow K =\frac{\Delta}{2}$ 
+		\item Es werden also nur Werte Berücksichtigt die einen Abstand $>K$ von $\mu_0$ haben
+	\end{itemize}
+	\item Der Prozess ist unter Kontrolle, wenn der Erwartungswert von $E(C_i^+)=E(C_i^-)=0$ ist
+	\item Der Prozess ist ab einem gewissen Index $i_0$ ausser Kontrolle wenn einer Erwartungswert eine Konstante $H$ überschreitet
+	\begin{itemize}
+		\item Den Prozess stoppen und in Ordnung bringen, Anschliessend neustarten und $C_i^+ = C_i^- = 0$ setzten
+		\item $H$ wird auch \textbf{Entscheidungsintervall} genannt
+		\item Ein guter Wert für $H$ ist in Formel \ref{eq:CUMSUMK} gezeigt (wenn zulässiger Bereich $\pm 3\sigma$ ist)
+	\end{itemize}
+\end{itemize}
+\begin{align}
+	\label{eq:CUMSUMPlus}
+	C_i^+&=\max\left\lbrace 0,\bar{x}_i-(\mu_0+K)+C_{i-1}^+\right\rbrace\\
+	\label{eq:CUMSUMMinus}
+	C_i^-&=\max\left\lbrace 0,(\mu_0-K)-\bar{x}_i+C_{i-1}^-\right\rbrace\\
+	\label{eq:CUMSUMK}
+	K &= \frac{\hat{\sigma}}{2}\qquad \text{und}\qquad H=5\hat{\sigma}
+\end{align}
+
+\subsubsection{EMWA}
+\begin{itemize}
+	\item \textbf{Exponentially Weighted Movin Average} Karte zur Mittelwertskontrolle
+	\item Gewicht $\beta$ in Formel \ref{eq:gedaechtnisAlg} klingt expontentiell ab (mit dem zuhnemenden \glqq Alter \grqq der jeweiligen Stichprobe)
+	\item Der Glättungsfaktor $\lambda$ bestimmt den Einfluss der zurückliegenden Stichprobenmittelwerte $\bar{x}_j$
+	\begin{itemize}
+		\item Je kleiner $\lambda$ dest mehr Werte $\bar{x}_j$ werden zur Entscheidung herangezogen (langes Gedächtnis)
+		\item Die Grenzen UCL$_i$ und LCL$_i$ steigen bei grösserem $\lambda$ schneller an
+		\item EMWA-Karte hat somit ein ungleichmässiges, unbegrenztes Gedächtnis
+		\item Für $\lambda=1$ haben wir die Shewhart $\bar{x}$-Karte
+	\end{itemize}
+	\item Den Wert $y_i$ zum $i.$ Zeitpunkt kann gemäss Formel \ref{eq:EWMAalg} absolut berechnet werden oder mit Formel \ref{eq:EWMArek} rekursiv
+	\item Die Kontrollgrenzen berechnen sich gemäss Formel \ref{eq:EWMAkontrollgrenze}
+	\begin{itemize}
+		\item \textbf{Achtung}: Diese ist Abhängig von der Messnummer $i$ und ändert sich somit mit jeder Messung 
+		\item Änderung zu beginn stark, anschliessend immer weniger, Funktion sieht aus wie Schrittantwort von PT1-Glied
+		\item Bereits für Mittelgrosse $i$ ist die Funktion asymptotisch und es ergeben sich die von $i$ unabhängigen Grenezn in Formel \ref{eq:EWMAkontrollgrenzeinf}
+	\end{itemize}
+\end{itemize}
+\begin{align}
+	\label{eq:EWMAalg}
+	y_i &= \underbrace{(1-\lambda)^{i}\mu_0}_{\alpha_i}+\sum_{j=1}^{i}\underbrace{(1-\lambda^{i-j})}_{\beta_i}\bar{x}_j\\
+	\label{eq:EWMArek}
+	y_i&=(1-\lambda)y_{i-1}+\lambda\bar{x}_i\\
+	\label{eq:EWMAkontrollgrenze}
+	\text{UCL}_i &= \mu_0 + 3\frac{\sigma}{\sqrt{n}}\sqrt{\frac{\lambda}{2-\lambda}(1-(1-\lambda)^{2i})}	\quad &\text{und} \qquad
+	\text{LCL}_i &= \mu_0 - 3\frac{\sigma}{\sqrt{n}}\sqrt{\frac{\lambda}{2-\lambda}(1-(1-\lambda)^{2i})}\\
+	\label{eq:EWMAkontrollgrenzeinf}
+	\text{UCL} &= \mu_0 + 3\frac{\sigma}{\sqrt{n}}\sqrt{\frac{\lambda}{2-\lambda}} 	\quad &\text{und} \qquad
+	\text{LCL} &= \mu_0 - 3\frac{\sigma}{\sqrt{n}}\sqrt{\frac{\lambda}{2-\lambda}}
+\end{align}

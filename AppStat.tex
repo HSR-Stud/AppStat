@@ -1,0 +1,63 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Project     : AppStat Zusammenfassung FS 2018
+% File        : Header.tex
+% Date        : 17. Juni 2018
+% Author      : Jérôme Perdrizat
+% Copyright (C) 2018  J. Perdrizat
+%
+%    This file is free: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version, but you have to reference to the original owner.
+%
+%	 Additionaly the authors have to be readable in the final document.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\titleinfo}{Applied Statistics - Zusammenfassung}
+\newcommand{\authorinfo}{J. Perdrizat}  % Do not remove any names! Initial authors stay first.
+\newcommand{\versioninfo}{$Revision: 1 $ - powered by \LaTeX}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Standard projektübergreifender Header für
+% - Makros 
+% - Farben
+% - Mathematische Operatoren
+%
+% DORT NUR ERGÄNZEN, NICHTS LÖSCHEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{./header/header}
+\input{./header/enumitem}
+\input{./header/hsrColors}
+\input{./header/hyperref}
+\input{./header/listings}
+\input{./header/mathe}
+\input{./header/tikz}
+\input{./header/biblatex} 
+
+\begin{document}
+\small %Schriftgrösse auf small setzen
+\tableofcontents
+\section{Vorwort}
+Dieses Dokument enthält sowohl aus den Unterlagen von Herr Steiner-Curtis \cite{C:SteinerCurtis} wie auch aus Herr Ruckstuhls Folien \cite{C:Ruckstuhl} teilweise übernommenen Sätze. Die von den Skripts verwendeten Grafiken sind jeweils mit dem Quellenangaben versehen. Die gesamte Zusammenfassung basiert auf diesen Dokumenten. 
+\newpage
+\input{./content/SPC_Kontrollkarten}
+\input{./content/SPC_StatistischeEingenschaftenKontrKarten}
+\input{./content/SPC_KontrollkartenMitGedaechnis}
+\input{./content/SPC_Annahmekontrolle}
+\input{./content/Regression}
+\input{./content/DoE}
+\input{./content/Rthings}
+\clearpage
+\printbibliography
+\input{./content/appendix}
+\end{document}
