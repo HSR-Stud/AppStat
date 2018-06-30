@@ -1,0 +1,18 @@
+\ifx\BIBLATEXsetings\undefined
+\def\BIBLATEXsetings{}
+
+%|==========================================================|
+%|															|
+%|  	Pakete, Commands und Links fÃ¼r Quellenverzeichnis  	|
+%|															|
+%|==========================================================|
+\usepackage	[backend=bibtex,			%Format der Referenz
+			style=ieee]{biblatex}		%AusfÃ¼hrung des Verzeichnises
+\addbibresource{./References.bib}
+\usepackage{hyperref}
+\usepackage{etoolbox}
+\apptocmd{\UrlBreaks}{\do\f\do\m}{}{}
+\setcounter{biburllcpenalty}{9000}% Kleinbuchstaben
+\setcounter{biburlucpenalty}{9000}% GroÃbuchstaben
+
+\fi

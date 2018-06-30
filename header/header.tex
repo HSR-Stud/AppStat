@@ -1,0 +1,125 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Project     : AppStat Zusammenfassung FS 2018
+% File        : Header.tex
+% Date        : 17. Juni 2018
+% Author      : JÃ©rÃ´me Perdrizat
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,twoside,a4paper,fleqn]{article}
+
+
+%|==========================================================|
+%|															|
+%|  	Fonts, GrÃ¶ssen, weitere Zeichen				      	|
+%|															|
+%|==========================================================|
+\usepackage[utf8]{inputenc}       %fÃ¼r Umlaute
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+
+
+
+%|==========================================================|
+%|															|
+%|  				verwendete Pakete				      	|
+%|				(alphabetisch absteigend)					|
+%|==========================================================|
+\usepackage{array}
+\usepackage{array}
+\usepackage{circuitikz}
+\usepackage{enumitem}
+\usepackage{graphics}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{longtable}
+\usepackage{mathtools}
+\usepackage{multicol} %Intermix single and mulltiple collumsÂ­
+\usepackage{multirow}
+\usepackage{pdfpages}
+\usepackage{rotating} % Rotation tools, including rotated fullpage floats
+\usepackage{siunitx}
+\usepackage{subfig}
+\usepackage{tabularx}
+\usepackage{todonotes}
+
+
+%|==========================================================|
+%|															|
+%|  	Seiten Formatierungsinformationen					|
+%|			inkl. Kopf- und Fusszeile				      	|
+%|															|
+%|==========================================================|
+
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{fancybox}
+
+%SeitenrÃ¤nder
+\geometry{
+	left 	= 1cm
+	,right 	= 1 cm
+	,top	= 1 cm
+	,bottom = 1 cm
+	,includeheadfoot}
+
+%pdf info
+\hypersetup{pdfauthor={\authorinfo},pdftitle={\titleinfo},colorlinks=false}
+\author{\authorinfo}
+\title{\titleinfo}
+
+%Kopf- und Fusszeile
+\pagestyle{fancy}
+\fancyhf{}
+
+%Linien oben und unten
+\renewcommand{\headrulewidth}{0.5pt} 
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyhead[L]{\titleinfo{ }\tiny{(\versioninfo)}}
+
+%Kopfzeile rechts bzw. aussen
+\fancyhead[R]{Seite \thepage { }von \pageref{LastPage}}
+
+%Fusszeile links bzw. innen
+\fancyfoot[L]{\footnotesize{\authorinfo}}
+
+%Fusszeile rechts bzw. ausen
+\fancyfoot[R]{\footnotesize{\today}}
+
+
+
+%|==========================================================|
+%|															|
+%|  	Weitere Formatierungsinformationen 					|
+%|					(Paketbezogen)							|
+%|==========================================================|
+
+
+
+%|==========================================================|
+%|															|
+%|  		Makros & anderer Low-Level bastel				|
+%|					(Paketbezogen)							|
+%|==========================================================|
+\makeatletter
+%% Makros fÃ¼r Titel, Autor und Datum 
+%% Dank diesem Makro stehen Titel, Autor und Datum Ã¼berall im Dokument zur verfÃ¼gung
+%% Date hat zudem den Default-Wert \today
+\def\@Title{}
+\def\@Author{}
+\def\@Date{\today}
+\newcommand{\Title}{\@Title}
+\newcommand{\Author}{\@Author}
+\newcommand{\Date}{\@Date}
+\AtBeginDocument{%
+	\let\@Title\@title
+	\let\@Author\@author
+	\let\@Date\@date
+}
+
+
+
+
+
